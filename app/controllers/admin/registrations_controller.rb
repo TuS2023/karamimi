@@ -50,13 +50,11 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_in_path_for(resource)
+    admin_top_path
+  end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
+  end
 end
