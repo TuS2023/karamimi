@@ -9,6 +9,14 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to root_path, notice: 'ゲストユーザーがログインしました。'
   end
 
+  def after_sign_in_path_for(resource)
+    mypage_path
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   protected
 
   def reject_inactive_user
