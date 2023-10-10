@@ -32,6 +32,12 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーがログインしました。'
+  end
+
   protected
 
   def reject_inactive_user
@@ -43,4 +49,5 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
   end
+
 end

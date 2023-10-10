@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  before_action :ensure_normal_user, only: [:update, :destroy]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -41,7 +42,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -55,6 +56,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     mypage_path
+  end
+
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除できません。'
+    end
   end
 
   # The path used after sign up for inactive accounts.
