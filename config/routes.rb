@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     get 'users/mypage' => 'users#show', as: 'mypage'
-    resources :reviews, except: [:update]
+    resources :reviews
     resources :users, only: [:show, :edit, :update] do
       collection do
         get 'check'
