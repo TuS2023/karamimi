@@ -5,6 +5,14 @@ class Review < ApplicationRecord
   has_many :review_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :image
+  
+  validates :title, presence: true
+  validates :image, presence: true
+  validates :explanation, presence: true
+  validates :store_name, presence: true
+  validates :address, presence: true
+  validates :price, presence: true
+  validates :score, presence: true
 
   def get_image(width, height)
     unless image.attached?
