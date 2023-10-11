@@ -12,10 +12,7 @@ Rails.application.routes.draw do
     resources :review_comments, only: [:destroy]
   end
 
-  #ゲストユーザー用
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
-  end
+
 
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -27,13 +24,18 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     get 'users/mypage' => 'users#show', as: 'mypage'
+    resources :reviews, except: [:update]
     resources :users, only: [:show, :edit, :update] do
       collection do
         get 'check'
         patch 'leave'
       end
     end
-    resources :reviews, except: [:update]
+
+  end
+  #ゲストユーザー用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
 

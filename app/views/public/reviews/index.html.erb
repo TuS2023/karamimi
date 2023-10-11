@@ -1,0 +1,6 @@
+<h1>投稿一覧</h1>
+<%= link_to '投稿フォーム', new_review_path %>
+<% @reviews.each do |review| %>
+  <p>タイトル</p>
+    <span><%= link_to review.title, review_path(review.id) %></span>
+<% end %>

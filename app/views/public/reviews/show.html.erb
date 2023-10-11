@@ -1,0 +1,25 @@
+<h2>商品画像</h2>
+<div>
+  <%= image_tag @review.get_image(350,300) %>
+</div>
+<h2>タイトル</h2>
+<p><%= @review.title %></p>
+
+
+<h2>店名</h2>
+<p><%= @review.store_name %></p>
+
+<h2>住所</h2>
+<p><%= @review.address %></p>
+
+<h2>値段</h2>
+<p><%= @review.price %></p>
+
+<h2>辛さレベル</h2>
+<p><%= @review.score %></p>
+
+<h2>投稿内容</h2>
+<p><%= @review.explanation %></p>
+
+
+

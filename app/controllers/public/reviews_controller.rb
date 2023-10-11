@@ -4,9 +4,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new(review_params)
-    review.save
-    redirect_to '/top'
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    if @review.save
+      redirect_to review_path(@review)
+    else
+      @reviews = Review.all
+      render :new
+    end
   end
 
   def show
@@ -30,7 +35,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :explanation, :image)
+    params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address)
 
   end
 end
