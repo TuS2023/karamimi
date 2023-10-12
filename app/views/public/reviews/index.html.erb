@@ -3,6 +3,8 @@
 <% @reviews.each do |review| %>
   <p>タイトル</p>
     <span><%= link_to review.title, review_path(review.id) %></span>
+  <%= render 'public/favorites/btn', review: review %>
+  コメント数： <%= review.review_comments.count %>
 
 <% end %>
-<%#= render "favorites/btn", review: @review %>
+

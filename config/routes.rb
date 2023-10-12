@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#show', as: 'mypage'
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
+      resources :review_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
       collection do
