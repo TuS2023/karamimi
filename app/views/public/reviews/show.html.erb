@@ -3,6 +3,7 @@
   <%= image_tag @review.get_image(350,300) %>
 </div>
 <h2>タイトル</h2>
+<%= render 'public/favorites/btn', review: @review %>
 <p><%= @review.title %></p>
 
 

@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     get 'users/mypage' => 'users#show', as: 'mypage'
-    resources :reviews
+    resources :reviews do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update] do
       collection do
         get 'check'
