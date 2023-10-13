@@ -1,7 +1,9 @@
 class Review < ApplicationRecord
   belongs_to :user
-  has_many :categories, through: :article_categories
+
   has_many :review_categories, dependent: :destroy
+  has_many :categories, through: :review_categories
+
   has_many :review_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :image
