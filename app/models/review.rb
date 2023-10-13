@@ -14,6 +14,11 @@ class Review < ApplicationRecord
   validates :price, presence: true
   validates :score, presence: true
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :score_count, -> {order(score: :desc)}
+  scope :price, -> {order(price: :desc)}
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
