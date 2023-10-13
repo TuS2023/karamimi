@@ -10,7 +10,32 @@
   <h4>値段</h4>
     <%= f.text_field :price %>
   <h4>辛さレベル</h4>
-    <%= f.text_field :score %>
+  <% if @review.id.nil? %>
+    <div class="form-group" id="score">
+      <%= f.label :score %>
+      <%= f.hidden_field :score, id: :review_score, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('fire1.jpg') %>",
+          starOff: "<%= asset_path('fire0.jpg') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'review[score]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+  <% else %>
+    <div class="form-group">
+      <%= render "rate", review: @review %>
+    </div>
+  <% end %>
   <h4>タグ</h4>
     <%= f.submit 'タグ追加' %>
 

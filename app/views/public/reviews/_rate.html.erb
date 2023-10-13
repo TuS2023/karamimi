@@ -6,10 +6,10 @@ $(document).on('turbolinks:load', function() {
 
   elem.innerHTML = "";
   let opt = {
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
+    starOn: "<%= asset_path('fire1.jpg') %>",
+    starOff: "<%= asset_path('fire0.jpg') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= review.star %>",
+    score: "<%= review.score %>",
     readOnly: true,
   };
   raty(elem, opt);
