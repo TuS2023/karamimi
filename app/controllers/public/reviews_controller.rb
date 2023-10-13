@@ -22,7 +22,7 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
-    
+
   end
 
   def edit

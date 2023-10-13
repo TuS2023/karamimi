@@ -4,7 +4,7 @@
 </div>
 <h2>タイトル</h2>
 <%= render 'public/favorites/btn', review: @review %>
-コメント数： <%= @book.book_comments.count %>
+コメント数： <%= @review.review_comments.count %>
 <p><%= @review.title %></p>
 
 
@@ -23,8 +23,10 @@
 <h2>投稿内容</h2>
 <p><%= @review.explanation %></p>
 
-<%= link_to "編集", edit_review_path(@review.id) %>
-<%= link_to "削除", review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% if @review.user == current_user %>
+ <%= link_to "編集", edit_review_path(@review.id) %>
+ <%= link_to "削除", review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
 
 <%= render "public/review_comments/index", review: @review %>
 <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>

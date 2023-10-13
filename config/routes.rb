@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
-    get 'users/mypage' => 'users#show', as: 'mypage'
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]

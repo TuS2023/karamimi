@@ -1,12 +1,13 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -19,11 +20,11 @@ class Public::UsersController < ApplicationController
   end
 
   def check
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def leave
-    @user = current_user
+    @user = User.find(params[:id])
     @user.update(is_active: false)
     reset_session
     flash[:notice] = "退会しました。"
@@ -42,5 +43,12 @@ class Public::UsersController < ApplicationController
 
   def user_parms
     parms.require(:user).permit(:name, :email)
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to reviews_path
+    end
   end
 end
