@@ -32,6 +32,7 @@ class Public::ReviewsController < ApplicationController
     else
       @reviews = Review.all
     end
+
   end
 
   def edit
@@ -53,7 +54,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address)
+    params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address, :category_name)
 
   end
 end

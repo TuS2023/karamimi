@@ -4,6 +4,7 @@
 |<%= link_to '古い順', reviews_path(old: "true") %>
 |<%= link_to '辛さレベルが高い順', reviews_path(score_count: "true") %>
 |<%= link_to '値段が高い順', reviews_path(price: "true") %>
+
 <% @reviews.each do |review| %>
   <p>タイトル</p>
     <span><%= link_to review.title, review_path(review.id) %></span>
