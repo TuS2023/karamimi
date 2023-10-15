@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/edit'
+  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
     resources :reviews, except: [:create, :new]
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :review_comments, only: [:destroy]
   end

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 mx-auto">
+      <%= render "errors", obj: @category %>
+      <h3><strong><%= flash[:notice] %><%= flash[:alert] %></strong></h3>
+      <h3 class="text-center"><strong class="border-bottom border-dark">タグ一覧・追加/削除</strong></h3>
+
+        <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+          <table class="table table-border cotents-area mt-5">
+            <tbody>
+              <tr>
+                <td class="align-middle">タグ名</td>
+                <td class="center align-middle">
+                  <%= f.text_field:category_name,:size=>"35" %>
+                </td>
+                <td colspan="2"></td>
+                <td>
+                  <%= f.submit "新規登録", class: "btn btn-primary btn-lg" %>
+                </td>
+              </tr>
+            </tbody>
+        <% end %>
+          <thead class="table-active">
+            <tr>
+              <th>タグ</th>
+              <th colspan="6"></th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+                <tr>
+                  <td class="allign-middle"><%= category.category_name %></td>
+                  <td colspan="3"></td>
+                  <td>
+                    <%= link_to "タグを変更する", edit_admin_category_path(category.id), class: "btn btn-success" %>
+                    <%= link_to "タグを削除する", admin_category_path(category.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当にタグを削除しますか？" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="pagination justify-content-cednter mt-3" >
+            <%= paginate @category, theme: "bootstrap-5" %>
+          </div>
+    </div>
+  </div>
+</div>
