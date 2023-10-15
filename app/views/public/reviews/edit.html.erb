@@ -36,9 +36,16 @@
       <%= render "rate", review: @review %>
     </div>
   <% end %>
-  <h4>タグ</h4>
-    <%= f.submit 'タグ追加' %>
-
+  <div class="row d-flex justify-content-start m-5">
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+      <div class="form-check form-check-inline flex flex-wrap">
+        <%= category.label do %>
+          <%= category.check_box %>
+          <%= category.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <h4>投稿内容</h4>
   <%= f.text_area :explanation %>

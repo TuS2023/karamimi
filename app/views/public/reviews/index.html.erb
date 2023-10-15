@@ -10,6 +10,11 @@
     <span><%= link_to review.title, review_path(review.id) %></span>
   <%= render 'public/favorites/btn', review: review %>
   コメント数： <%= review.review_comments.count %>
+  <div class="col-1 py-3">
+    <% review.categories.each do |category| %>
+      <%= category.category_name %>
+    <% end %>
+  </div>
 
 <% end %>
 

@@ -43,10 +43,18 @@
     </div>
   <% end %>
 
-  <h4>タグ</h4>
-    <%= f.text_field :category_name %>
-    <%= f.submit 'タグ追加' %>
+  <div class="form-group m-5">タグ</div>
 
+  <div class="row d-flex justify-content-start m-5">
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+      <div class="form-check form-check-inline flex flex-wrap">
+        <%= category.label do %>
+          <%= category.check_box %>
+          <%= category.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <h4>投稿内容</h4>
   <%= f.text_area :explanation %>

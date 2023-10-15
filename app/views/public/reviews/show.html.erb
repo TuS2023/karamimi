@@ -1,4 +1,4 @@
-<h2>商品画像</h2>
+<h2>投稿詳細</h2>
 <div>
   <%= image_tag @review.get_image(350,300) %>
 </div>
@@ -6,8 +6,12 @@
 <%= render 'public/favorites/btn', review: @review %>
 コメント数： <%= @review.review_comments.count %>
 <p><%= @review.title %></p>
-
-
+<% @review.categories.each do |category| %>
+ <tr>
+   <th style="width: 30%">タグ</th>
+   <th style="width: 70%"><%= category.category_name %></th>
+ </tr>
+<% end %>
 
 <h2>店名</h2>
 <p><%= @review.store_name %></p>

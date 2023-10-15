@@ -30,7 +30,7 @@ class Public::ReviewsController < ApplicationController
     elsif params[:price]
       @reviews = Review.price
     else
-      @reviews = Review.all
+      @reviews = params[:review_id].present? ? category.find(params[:category_id]).reviews : Review.all
     end
 
   end
@@ -54,7 +54,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address, :category_name)
+    params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address, category_ids: [])
 
   end
 end
