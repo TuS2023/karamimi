@@ -1,0 +1,35 @@
+<h2>投稿詳細</h2>
+<div>
+  <%= image_tag @review.get_image(350,300) %>
+</div>
+<h2>タイトル</h2>
+<%= render 'public/favorites/btn', review: @review %>
+コメント数： <%= @review.review_comments.count %>
+<p><%= @review.title %></p>
+<% @review.categories.each do |category| %>
+ <tr>
+   <th style="width: 30%">タグ</th>
+   <th style="width: 70%"><%= category.category_name %></th>
+ </tr>
+<% end %>
+
+<h2>店名</h2>
+<p><%= @review.store_name %></p>
+
+<h2>住所</h2>
+<p><%= @review.address %></p>
+
+<h2>値段</h2>
+<p><%= @review.price %></p>
+
+<h2>辛さレベル</h2>
+<div class="form-group">
+  <%= render "public/reviews/rate", review: @review %>
+</div>
+<h2>投稿内容</h2>
+<p><%= @review.explanation %></p>
+
+<%= link_to "編集", edit_admin_review_path(@review.id) %>
+
+
+<%= render "public/review_comments/index", review: @review %>
