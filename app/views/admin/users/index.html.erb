@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h2>会員一覧</h2>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td class="<%= user.is_active ? 'text-gray' : 'text-green' %>"><%= user.is_active ? '有効' : '退会済み' %></td>
+        <% end %>
+      </table>
+    </div>
+  </div>

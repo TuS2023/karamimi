@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, except: [:create, :new]
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
     resources :review_comments, only: [:destroy]
   end
 

@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center"><%= @user.name %>さんの会員情報編集</h2>
+
+  <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f| %>
+    <% render "layouts/errors", obj: @user %>
+
+     <div class="row">
+          <label class="col-lg-3">名前</label>
+          <div class="col-lg-3">
+            <%= f.text_field :name,autoforcus: true, autocomplete: "name" %>
+          </div>
+        </div><br>
+
+     <div class="row">
+        <label class="col-lg-3">メールアドレス</label>
+        <div class="col-lg-3">
+          <%= f.text_field :email,autoforcus: true, autocomplete: "email",  placeholder: "sample@exanple.com" %>
+        </div>
+      </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">会員ステータス</label>
+      <div class="col-lg-3">
+        <%= f.select :is_active, [['退会済み', false], ['有効', true]], {}, { class: 'form-control' } %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-9"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
