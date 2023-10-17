@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :set_user, only: [:favorites]
 
   def show
     @user = User.find(params[:id])
@@ -31,6 +32,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:review_id)
+    @favorite_review = Review.find(favorites)
+  end
+
 
   private
 
@@ -50,5 +56,9 @@ class Public::UsersController < ApplicationController
     unless user.id == current_user.id
       redirect_to reviews_path
     end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

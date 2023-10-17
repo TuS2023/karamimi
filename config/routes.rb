@@ -39,6 +39,9 @@ Rails.application.routes.draw do
         get 'check'
         patch 'leave'
       end
+      member do
+        get :favorites
+      end
     end
 
   end
