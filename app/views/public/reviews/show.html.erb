@@ -3,9 +3,10 @@
   <%= image_tag @review.get_image(350,300) %>
 </div>
 <h2>タイトル</h2>
+<p><%= @review.title %></p>
 <%= render 'public/favorites/btn', review: @review %>
 コメント数： <%= @review.review_comments.count %>
-<p><%= @review.title %></p>
+
 <% @review.categories.each do |category| %>
  <tr>
    <th style="width: 30%">タグ</th>

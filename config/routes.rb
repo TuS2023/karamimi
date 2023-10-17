@@ -12,8 +12,9 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top', as: 'top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, except: [:create, :new]
+      resources :review_comments, only: [:destroy]
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
-    resources :review_comments, only: [:destroy]
+
   end
 
 

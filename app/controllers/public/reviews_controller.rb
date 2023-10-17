@@ -25,10 +25,10 @@ class Public::ReviewsController < ApplicationController
       @reviews = Review.latest
     elsif params[:old]
       @reviews = Review.old
-    elsif params[:score_count]
-      @reviews = Review.score_count
-    elsif params[:price]
-      @reviews = Review.price
+    elsif params[:high_score]
+      @reviews = Review.high_score
+    elsif params[:low_score]
+      @reviews = Review.low_score
     else
       @reviews = params[:review_id].present? ? category.find(params[:category_id]).reviews : Review.all
     end

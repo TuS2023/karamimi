@@ -12,6 +12,8 @@
       <td>
         <% if review_comment.user == current_user %>
           <%= link_to "Destroy", review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+        <% elsif admin_signed_in? %>
+          <%= link_to "Destroy", admin_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
         <% end %>
       </td>
     </tr>

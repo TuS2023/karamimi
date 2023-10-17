@@ -18,8 +18,8 @@ class Review < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :score_count, -> {order(score: :desc)}
-  scope :price, -> {order(price: :desc)}
+  scope :high_score, -> {order(score: :desc)}
+  scope :low_score, -> {order(score: :asc)}
 
   def get_image(width, height)
     unless image.attached?
