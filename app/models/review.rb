@@ -21,6 +21,11 @@ class Review < ApplicationRecord
   scope :high_score, -> {order(score: :desc)}
   scope :low_score, -> {order(score: :asc)}
 
+  def self.search(keyword)
+    where("title LIKE ?", "%#{keyword}%")
+  end
+
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

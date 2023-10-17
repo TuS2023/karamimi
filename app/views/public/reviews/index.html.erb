@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <div>
+      <%= render "search", review: @review %>
+    </div>
     <div class="col">
       <%= link_to '投稿フォーム', new_review_path %>
     </div>

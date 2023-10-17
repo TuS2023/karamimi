@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :reviews, except: [:create, :new]
+    resources :reviews, only: [:index, :show, :edit, :update, :destroy] do
       resources :review_comments, only: [:destroy]
+    end
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
 
   end
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
+    get 'search' => 'reviews#search'
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]

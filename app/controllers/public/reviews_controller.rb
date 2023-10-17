@@ -30,8 +30,15 @@ class Public::ReviewsController < ApplicationController
     elsif params[:low_score]
       @reviews = Review.low_score
     else
-      @reviews = params[:review_id].present? ? category.find(params[:category_id]).reviews : Review.all
+      @reviews = params[:category_id].present? ? Category.find(params[:category_id]).reviews : Review.all
     end
+
+    if params[:keyword]
+      @reviews = @reviews.search(params[:keyword]).page(params[:page])
+    else
+      @reviews = @reviews.page(params[:page])
+    end
+    @keyword = params[:keyword]
 
   end
 

@@ -14,16 +14,25 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
-      redirect_to admin_review_path(@review)
-    else
-      render :edit
-    end
+    review = Review.find(params[:id])
+    review.update(review_params)
+    redirect_to admin_review_path(review.id)
+    #if @review.update(review_params)
+      #redirect_to admin_review_path(review.id)
+    #else
+      #render :edit
+    #end
+  end
+  
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to '/reviews'
   end
 
   private
 
   def review_params
-    params.require(:reivew).permit(:title, :explanation, :store_name, :address, :score, :price,)
+    params.require(:review).permit(:title, :explanation, :store_name, :address, :score, :price,)
   end
 end
