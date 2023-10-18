@@ -4,12 +4,12 @@
       <h2 class="mb-4 text-center"><%= @user.name %>さんの会員詳細</h2>
 
       <div class="col">
-        <p class="my-3"><strong>プロフィール画像 </strong><span style="margin-left:150px;"><%= image_tag @user.profile_image,size: "100x100" %></span></p>
+        <p class="my-3"><strong>プロフィール画像 </strong><span style="margin-left:150px;"><%= image_tag @user.get_profile_image,size: "100x100" %></span></p>
         <p class="my-3"><strong>会員ID </strong><span style="margin-left:150px;"><%= @user.id %></span></p>
         <p class="my-3"><strong>名前 </strong><span style="margin-left:160px;"><%= @user.name %></span></p>
         <p class="my-3"><strong>メールアドレス </strong><span style="margin-left:80px;"><%= @user.email %></span></p>
         <p class="my-3"><strong>会員ステータス </strong><span style="margin-left:90px; color:<%= @user.is_active ? 'green' : 'gray' %>;"><%= @user.is_active ? '有効' : '退会済み' %></span></p>
-
+        <%= link_to "いいねした投稿", favorites_user_path(@user) %>
         <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-success btn-space' %>
 
       </div>
