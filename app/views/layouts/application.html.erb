@@ -9,17 +9,22 @@
 
     <%= javascript_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <style>
+        .fas{
+            font-size:25px;
+        }
+    </style>
   </head>
 
   <body>
-    <div class="signup-wrapper">
-      <header>
+    <div class="wrapper">
+      <header class="sticky-top">
         <%= render 'layouts/header' %>
       </header>
       <main>
         <%= yield %>
       </main>
-      <footer>
+      <footer class="fixed-bottom">
         <%= render 'layouts/footer' %>
       </footer>
     </div>
