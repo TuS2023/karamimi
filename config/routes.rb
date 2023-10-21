@@ -30,15 +30,13 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     get 'search' => 'reviews#search'
+    get  '/users/check' => 'users#check'
+    patch  '/users/leave' => 'users#leave'
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
-      collection do
-        get 'check'
-        patch 'leave'
-      end
       member do
         get :favorites
       end

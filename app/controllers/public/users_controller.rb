@@ -21,7 +21,7 @@ class Public::UsersController < ApplicationController
   end
 
   def check
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def leave
