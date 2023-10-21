@@ -1,0 +1,19 @@
+<% @reviews.each do |review| %>
+  <div class="card col-md-3 p-3">
+    <div class="text-center d-flex align-items-center mb-2", style="height: 120px";>
+      <%= link_to review_path(review.id), class:"text-reset" do %>
+        <%= image_tag review.get_review_image, :style => "max-width:100%; max-height:100%" %>
+      <% end %>
+    </div>
+    <div class="pt-3 mb-2">
+      <%= review.title %><br>
+      <%= render 'public/favorites/btn', review: review %><br>
+      コメント数： <%= review.review_comments.count %><br>
+      <span>￥</span><%= review.price %><br>
+      <%= render 'rate', review: review %>
+      <% review.categories.each do |category| %>
+        <%= category.category_name %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

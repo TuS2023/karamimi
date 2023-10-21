@@ -1,34 +1,16 @@
 <div class="container">
   <div class="row">
-    <div>
-      <%= render "search", review: @review %>
-    </div>
-    <div class="col">
-      <%= link_to '投稿フォーム', new_review_path %>
-    </div>
     <div class="col">
       <%= link_to '新しい順', reviews_path(latest: "true") %>
       |<%= link_to '古い順', reviews_path(old: "true") %>
       |<%= link_to '辛さレベルが高い順', reviews_path(high_score: "true") %>
-      |<%= link_to '辛さレベルが低い順', reviews_path(low_price: "true") %>
+      |<%= link_to '辛さレベルが低い順', reviews_path(low_score: "true") %>
+    </div>
+    <div class="col">
+      <%= render "search", review: @review %>
     </div>
   </div>
-    <div class="col">
-      <% @reviews.each do |review| %>
-        <%= image_tag review.get_image(100,100) %>
-      　<%= link_to review.title, review_path(review.id) %>
-        <%= render 'public/favorites/btn', review: review %>
-        コメント数： <%= review.review_comments.count %>
-        <div>
-          <%= review.price %>
-        </div>
-        <%= render 'rate', review: review %>
-        <div class="col-2 py-3">
-          <% review.categories.each do |category| %>
-            <%= category.category_name %>
-          <% end %>
-        </div>
-      <% end %>
+    <div class="col yt-10 pt-5">
+      <%= render "index", reviews: @reviews %>
     </div>
-
 </div>
