@@ -1,46 +1,46 @@
 
-<div class="container mt-5">
+<div class="container py-5">
   <h2 class="mb-4 text-center"><%= @user.name %>さんの会員情報編集</h2>
-
-  <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
+  <div>
     <% render "layouts/errors", obj: @user %>
-
+  </div>
+  <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
     <div class="row">
-      <label class="col-lg-3">プロフィール画像</label>
-      <div class="col-lg-3">
-        <%= f.file_field :profile_image %>
+      <div class="col-10 mx-auto">
+        <table class="table table-borderless">
+          <tr>
+            <td class="col-4"><%= f.label :profile_image, "プロフィール画像" %></td>
+            <td><%= f.file_field :profile_image %></td>
+          </tr>
+          <tr>
+            <td class="col-4">会員ID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td class="col-4"><%= f.label :name, "氏名" %></td>
+            <td><%= f.text_field :name,autoforcus: true, autocomplete: "name" %></td>
+          </tr>
+          <tr>
+            <td class="col-4"><%= f.label :email,"メールアドレス" %></td>
+            <td><%= f.text_field :email,autoforcus: true, autocomplete: "email",  placeholder: "sample@exanple.com" %></td>
+          </tr>
+          <tr>
+            <td class="col-4">会員ステータス</td>
+            <td>
+              <% if @user.is_active == true %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-secondary">退会</p>
+            <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
 
-    <div class="row">
-      <label class="col-lg-3">名前</label>
-      <div class="col-lg-3">
-        <%= f.text_field :name,autoforcus: true, autocomplete: "name" %>
-      </div>
-    </div><br>
+    <div class="form-group offset-4">
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
 
-    <div class="row">
-      <label class="col-lg-3">メールアドレス</label>
-      <div class="col-lg-3">
-        <%= f.text_field :email,autoforcus: true, autocomplete: "email",  placeholder: "sample@exanple.com" %>
-      </div>
-    </div><br>
-
-    <div class="row">
-      <label class="col-lg-3">会員ステータス</label>
-      <div class="col-lg-3">
-        <%= f.select :is_active, [['退会済み', false], ['有効', true]], {}, { class: 'form-control' } %>
-      </div>
-    </div><br>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-9"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
-        </div>
-      </div>
-    </div>
     <div class="ml-auto mt-3 mb-2">
       <%= link_to "退会する", users_check_path, class: "btn btn-danger" %>
     </div>
