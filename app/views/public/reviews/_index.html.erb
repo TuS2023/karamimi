@@ -1,4 +1,4 @@
-<% @reviews.each do |review| %>
+<% reviews.each do |review| %>
   <div class="col-3 pb-5">
     <div class="text-center d-flex align-items-center mb-2", style="height: 120px";>
       <%= link_to review_path(review.id), class:"text-reset" do %>
@@ -12,8 +12,9 @@
       <h5><span>￥</span><%= review.price %></h5>
       <%= render 'public/favorites/btn', review: review %>
       コメント数： <%= review.review_comments.count %><br>
-      <%= render 'rate', review: review %>
+      <%= render 'public/reviews/rate', review: review %>
       <% review.categories.each do |category| %>
+      　<i class="fa-solid fa-tag"></i>
         <%= category.category_name %>
       <% end %>
     </div>
