@@ -17,17 +17,12 @@ class Admin::ReviewsController < ApplicationController
     review = Review.find(params[:id])
     review.update(review_params)
     redirect_to admin_review_path(review.id)
-    #if @review.update(review_params)
-      #redirect_to admin_review_path(review.id)
-    #else
-      #render :edit
-    #end
   end
-  
+
   def destroy
     review = Review.find(params[:id])
     review.destroy
-    redirect_to '/reviews'
+    redirect_to admin_reviews_path
   end
 
   private

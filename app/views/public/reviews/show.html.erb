@@ -29,7 +29,7 @@
 
      <h4>辛さレベル</h4>
      <div class="form-group">
-      <%= render "rate", review: @review %>
+      <%= render "public/reviews/rate", review: @review %>
      </div>
   </div>
   <div class="container">
@@ -38,7 +38,7 @@
       <h2>投稿内容</h2>
       <p><%= @review.explanation %></p>
       <div class="col-6">
-      <%= render "public/review_comments/index", review: @review %>
+      <%= render "public/review_comments/comment", review: @review %>
       <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
      </div>
    </div>

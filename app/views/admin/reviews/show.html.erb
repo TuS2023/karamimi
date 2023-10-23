@@ -1,6 +1,6 @@
 <h2>投稿詳細</h2>
 <div>
-  <%= image_tag @review.get_image(350,300) %>
+  <%= image_tag @review.get_review_image, :style => "width:200px; height:150px;" %>
 </div>
 <h2>タイトル</h2>
 <p><%= @review.title %></p>
@@ -33,4 +33,4 @@
 <%= link_to "編集", edit_admin_review_path(@review.id) %>
 
 
-<%= render "public/review_comments/index", review: @review %>
+<%= render "public/review_comments/comment", review: @review %>

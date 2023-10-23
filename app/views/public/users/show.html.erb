@@ -38,8 +38,10 @@
     <div class="col-3 offset-4">
       <%= link_to "いいねした投稿", favorites_user_path(@user), class: "btn btn-primary" %>
     </div>
-    <div class="col-3">
+    <% if @user.email != "guest@example.com" %>
+     <div class="col-3">
       <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-success btn-space' %>
-    </div>
+     </div>
+    <% end %>
   </div>
 </div>

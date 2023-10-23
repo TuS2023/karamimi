@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
   end
 
   def leave
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
     flash[:notice] = "退会しました。"
@@ -44,7 +44,7 @@ class Public::UsersController < ApplicationController
 
     def ensure_guest_user
       @user = User.find(params[:id])
-      if @user.name == "guestuser"
+      if @user.email == "guest@example.com"
         redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
       end
     end
