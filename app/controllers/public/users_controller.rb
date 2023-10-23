@@ -36,7 +36,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:review_id)
     @favorite_reviews = Review.find(favorites)
-    @review = Review.find(params[:id])
   end
 
 
