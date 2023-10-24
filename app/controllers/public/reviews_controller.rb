@@ -7,8 +7,10 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to review_path(@review)
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       @reviews = Review.all
       render :new
     end
@@ -49,12 +51,14 @@ class Public::ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     review.update(review_params)
+    flash[:notice] = "投稿の編集に成功しました。"
     redirect_to review_path(review.id)
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    flash[:notice] = "投稿の削除に成功しました。"
     redirect_to '/reviews'
   end
 
