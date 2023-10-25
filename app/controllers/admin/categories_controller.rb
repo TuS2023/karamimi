@@ -34,7 +34,7 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     category = Category.find(params[:id])
     category.destroy
-    redirecto_to admin_categories_path, notice: "タグを削除しました。"
+    redirect_to admin_categories_path, notice: "タグを削除しました。"
   end
 
   private
