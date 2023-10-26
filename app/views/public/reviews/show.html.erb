@@ -39,7 +39,13 @@
       <p><%= @review.explanation %></p>
       <div class="col-6">
         <%= render "public/review_comments/comment", review: @review %>
-        <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
+      </div>
+      <div class="col-8">
+        <% if user_signed_in? %>
+          <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
+        <% else %>
+          <%= "コメントはログイン後にできます。" %>
+        <% end %>
       </div>
     </div>
   </div>

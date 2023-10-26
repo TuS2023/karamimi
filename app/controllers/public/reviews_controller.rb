@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def new
     @review = Review.new
   end
@@ -66,6 +68,6 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address, category_ids: [])
-
   end
+
 end
