@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :reject_inactive_user, only: [:create]
 
+#ゲストユーザー用
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -19,6 +20,7 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+#退会済みステータスのユーザーに対してemailが同じだと作成不可にする
   def reject_inactive_user
     @user = User.find_by(email: params[:user][:email])
     if @user
