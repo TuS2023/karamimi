@@ -16,13 +16,13 @@ class Admin::ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     review.update(review_params)
-    redirect_to admin_review_path(review.id)
+    redirect_to admin_review_path(review.id), notice: "投稿情報を更新しました。"
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
-    redirect_to admin_reviews_path
+    redirect_to admin_reviews_path, notice: "投稿を削除しました。"
   end
 
   private

@@ -15,7 +15,7 @@ class User < ApplicationRecord
 #ゲストユーザーをクリエイトと同時にパスワードをランダムに生成させる。メールアドレスと名前は指定
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join,
+      user.password = SecureRandom.urlsafe_base64
       user.name = "ゲスト"
     end
   end

@@ -31,7 +31,7 @@ Review.find_or_create_by!(store_name: "イタリアン辛い") do |review|
   review.title = "唐辛子たっぷりトマトパスタ"
   review.address = "静岡県浜松市"
   review.score = 3
-  review.price = "1000"
+  review.price = 1000
 end
 Review.find_or_create_by!(store_name: "四川料理　辛") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
@@ -40,7 +40,7 @@ Review.find_or_create_by!(store_name: "四川料理　辛") do |review|
   review.title = "激辛ビビンバ"
   review.address = "静岡県静岡市"
   review.score = 5
-  review.price = "2000"
+  review.price = 2000
 end
 Review.find_or_create_by!(store_name: "居酒屋　汗汗") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg")
@@ -49,5 +49,5 @@ Review.find_or_create_by!(store_name: "居酒屋　汗汗") do |review|
   review.title = "ウマ辛キムチ"
   review.address = "静岡県掛川市"
   review.score = 2
-  review.price = "800"
+  review.price = 800
 end

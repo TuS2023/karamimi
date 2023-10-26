@@ -2,8 +2,6 @@
   <%= render 'layouts/errors', obj: @review %>
   <h1 class="m-5">新規投稿フォーム</h1>
   <div class="row">
-
-
     <%= form_with model: @review do |f| %>
       <%= f.file_field :image, accept: "image/*" %>
 

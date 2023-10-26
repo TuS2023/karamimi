@@ -15,7 +15,7 @@
   <div class="col-9">
     <div>
       <%= review.title %><br>
-      <h5><span>￥</span><%= review.price %></h5>
+      <h5><span>￥</span><%= review.price.to_s(:delimited) %></h5>
       <%= render 'public/favorites/btn', review: review %>
       コメント数： <%= review.review_comments.count %><br>
       <%= render 'public/reviews/rate', review: review %>

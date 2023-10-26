@@ -25,7 +25,7 @@
       <p><%= @review.address %></p>
 
       <h4>値段</h4>
-      <p><span>￥</span><%= @review.price %></p>
+      <p><span>￥</span><%= @review.price.to_s(:delimited) %></p>
 
       <h4>辛さレベル</h4>
       <div class="form-group">
