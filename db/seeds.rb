@@ -51,3 +51,13 @@ Review.find_or_create_by!(store_name: "居酒屋　汗汗") do |review|
   review.score = 2
   review.price = 800
 end
+
+Category.find_or_create_by!(category_name: "持ち帰り可")
+Category.find_or_create_by!(category_name: "クーポン利用可")
+Category.find_or_create_by!(category_name: "予約不可")
+Category.find_or_create_by!(category_name: "予約可能")
+Category.find_or_create_by!(category_name: "期間限定")
+Category.find_or_create_by!(category_name: "唐辛子")
+Category.find_or_create_by!(category_name: "山椒")
+Category.find_or_create_by!(category_name: "胡椒")
+Category.find_or_create_by!(category_name: "わさび")
