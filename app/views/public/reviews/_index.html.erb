@@ -1,8 +1,14 @@
 <% reviews.each do |review| %>
   <div class="col-3 pb-5">
     <div class="text-center d-flex align-items-center mb-2", style="height: 120px";>
-      <%= link_to review_path(review.id), class:"text-reset" do %>
-        <%= image_tag review.get_review_image, :style => "width:200px; height:150px;" %>
+      <% if user_signed_in? %>
+        <%= link_to review_path(review.id), class:"text-reset" do %>
+          <%= image_tag review.get_review_image, :style => "width:200px; height:150px;" %>
+        <% end %>
+      <% else %>
+        <%= link_to admin_review_path(review.id), class:"text-reset" do %>
+          <%= image_tag review.get_review_image, :style => "width:200px; height:150px;" %>
+        <% end %>
       <% end %>
     </div>
   </div>
