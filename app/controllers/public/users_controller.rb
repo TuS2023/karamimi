@@ -14,6 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:notice] = "プロフィール情報の変更が完了しました。"
       redirect_to user_path
     else
       render :edit
@@ -40,7 +41,7 @@ class Public::UsersController < ApplicationController
 
 
   private
-
+#ゲストログインユーザーのアクセス制限
     def ensure_guest_user
       @user = User.find(params[:id])
       if @user.email == "guest@example.com"
@@ -51,14 +52,14 @@ class Public::UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :profile_image)
     end
-
+#ユーザーのアクセス制限
     def is_matching_login_user
       user = User.find(params[:id])
       unless user.id == current_user.id
-        redirect_to reviews_path
+        redirect_to reviews_path , notice: '他のユーザーのプロフィール編集画面へ遷移はできません。'
       end
     end
-
+#いいねの
     def set_user
       @user = User.find(params[:id])
     end
