@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'search' => 'reviews#search'
     get  '/users/check' => 'users#check'
     patch  '/users/leave' => 'users#leave'
+    get "users" => redirect("/users/sign_up")
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]

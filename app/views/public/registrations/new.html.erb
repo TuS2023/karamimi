@@ -1,18 +1,20 @@
 <div class="container pt-3">
-  <h4><span class="page_title col-10 ml-4">新規会員登録</span></h4>
+  <%= render "layouts/errors", obj: resource %>
   <div class="row">
-    <div class="col mx-auto mt-3 mb-3">
-
+    <div class="col-10 mt-5 mb-5">
+      <h4><span class="col ml-4">新規会員登録</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 mx-auto ">
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render "layouts/errors", obj: resource %>
-
         <div class="form-group form-inline form-group row">
           <%= f.label :name, "名前", class:"col-3 justify-content-start" %><br>
           <%= f.text_field :name, class:"form-control col-2 mr-4 border border-dark", autofocus: true, :placeholder => "名前" %>
         </div>
 
         <div class="form-group form-inline form-group row">
-          <%= f.label :email, "メールアドレス", class:"col-3 justify-content-start " %><br />
+          <%= f.label :email, "メールアドレス", class:"col-3 justify-content-start " %>
           <%= f.email_field :email, class:"form-control col-2 border border-dark", autofocus: true, autocomplete: "email", :placeholder => "sample@exmple.com" %>
         </div>
 
@@ -35,6 +37,7 @@
       <% end %>
     </div>
   </div>
+
   <h5><span class="col-10 ml-5">ゲストでログインする</span></h5>
   <div class="col-8 py-3 ml-5">
     <h5 class="ml-5 pl-5"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-space'%></h5>

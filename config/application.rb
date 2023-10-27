@@ -20,3 +20,10 @@ module Karamimi
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+#新規登録画面のレイアウトが崩れるのでfield_with_errorsを読み込まないよう設定
+module FreemarketSample65d
+  class Application < Rails::Application
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+  end
+end
