@@ -40,7 +40,7 @@ class Public::ReviewsController < ApplicationController
     if params[:keyword]
       @reviews = @reviews.search(params[:keyword]).page(params[:page])
     else
-      @reviews = @reviews.page(params[:page])
+      @reviews = @reviews.page(params[:page]).per(5)
     end
     @keyword = params[:keyword]
 
