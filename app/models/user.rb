@@ -14,12 +14,17 @@ class User < ApplicationRecord
 #ユーザーのプロフィール画像はひとつだけ持たせる
   has_one_attached :profile_image
 
+  GUEST_USER_EMAIL = "guest@example.com"
 #ゲストユーザーをクリエイトと同時にパスワードをランダムに生成させる。メールアドレスと名前は指定
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲスト"
     end
+  end
+#ゲストユーザー条件分岐用
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
 #プロフィール画像がなければno_image.jpgを渡す
   def get_profile_image
@@ -30,5 +35,7 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_active == true)
   end
+
+
 
 end

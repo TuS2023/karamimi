@@ -75,8 +75,10 @@ ja:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
     failure:
       user:
+        not_found_in_database: "そのユーザーは存在しません。正しい情報を入力してください。"
         invalid: "ログイン情報を入力してください。"
       admin:
+        not_found_in_database: "そのユーザーは存在しません。正しい情報を入力してください"
         invalid: "ログイン情報を入力してください。"
   errors:
     messages:
