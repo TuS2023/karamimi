@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @category = Category.new
-    @categories = Category.page(params[:page])
+    @categories = Category.all
   end
 
   def create
@@ -11,7 +11,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to admin_categories_path, notice: "新しいタグを追加しました。"
     else
-      @categories = Category.page(params[:page])
+      @categories = Category.all
       flash.now[:alert] = "タグの追加に失敗しました。"
       render :index
     end
