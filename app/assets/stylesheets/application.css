@@ -31,3 +31,16 @@
   border: solid 1px #930403;
 }
 
+.about-image {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-top: auto;
+}
+.image-bottom {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
