@@ -6,3 +6,20 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+  activerecord:
+    models:
+      user: ユーザー
+      review: 投稿
+    attributes:
+      user:
+        name: 名前
+        email: Eメール
+        password: パスワード
+      review:
+        title: タイトル
+        explanation: 投稿内容
+        store_name: 店名
+        address: 住所
+        score: 辛さレベル
+        price: 値段
+        image: 画像
