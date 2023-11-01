@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
-  before_action :not_login_user, only: [:edit]
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :set_user, only: [:favorites]
 
@@ -60,7 +59,7 @@ class Public::UsersController < ApplicationController
 #別ユーザー編集画面へ飛ばないようアクセス制限
     def is_matching_login_user
       user = User.find(params[:id])
-      unless user.id == current_user.id
+      unless user.id == current_user.id && @user.id == false
         redirect_to reviews_path , notice: '他のユーザーのプロフィール編集画面へ遷移はできません。'
       end
     end
