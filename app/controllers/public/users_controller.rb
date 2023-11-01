@@ -63,11 +63,7 @@ class Public::UsersController < ApplicationController
         redirect_to reviews_path , notice: '他のユーザーのプロフィール編集画面へ遷移はできません。'
       end
     end
-#ログインしていないユーザーが編集ページにいかないように
-    def not_login_user
-      @user.id == false
-        redirect_to reviews_path , notice: '他のユーザーのプロフィール編集画面へ遷移はできません。'
-    end
+
 #いいねの制限
     def set_user
       @user = User.find(params[:id])
