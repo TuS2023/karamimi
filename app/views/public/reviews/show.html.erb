@@ -13,8 +13,10 @@
       <%= category.category_name %>
     <% end %>
 
-    <div class="mt-3 ml-3">
+    <div class="mt-3 ml-3" id="favorite_buttons_<%= @review.id %>">
      <%= render 'public/favorites/btn', review: @review %>
+    </div>
+    <div>
      コメント数： <%= @review.review_comments.count %>
     </div>
 

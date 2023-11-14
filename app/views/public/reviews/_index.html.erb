@@ -1,7 +1,6 @@
 <% reviews.each do |review| %>
   <div class="col-3 pb-5">
     <div class="text-center d-flex align-items-center mb-2", style="height: 120px";>
-
       <% if admin_signed_in? %>
         <%= link_to admin_review_path(review.id), class:"text-reset" do %>
           <%= image_tag review.get_review_image, :style => "width:200px; height:150px;" %>
@@ -15,15 +14,29 @@
   </div>
   <div class="col-9">
     <div>
-      <%= review.title %><br>
-      <h5><span>￥</span><%= review.price.to_s(:delimited) %></h5>
-      <%= render 'public/favorites/btn', review: review %>
-      コメント数： <%= review.review_comments.count %><br>
-      <%= render 'public/reviews/rate', review: review %>
-      <% review.categories.each do |category| %>
-      　<i class="fa-solid fa-tag"></i>
-        <%= category.category_name %>
-      <% end %>
+      <tr>
+        <td>
+          <%= review.title %>
+        </td>
+        <td>
+          <h5><span>￥</span><%= review.price.to_s(:delimited) %></h5>
+        </td>
+        <td id="favorite_buttons_<%= review.id %>">
+          <%= render 'public/favorites/btn', review: review %>
+        </td>
+        <td>
+          コメント数： <%= review.review_comments.count %>
+        </td>
+        <td>
+          <%= render 'public/reviews/rate', review: review %>
+        </td>
+        <td>
+          <% review.categories.each do |category| %>
+      　    <i class="fa-solid fa-tag"></i>
+            <%= category.category_name %>
+          <% end %>
+        </td>
+      </tr>
     </div>
   </div>
 <% end %>

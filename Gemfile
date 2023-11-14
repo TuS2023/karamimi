@@ -66,3 +66,4 @@ gem "net-imap"
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'rails-i18n'
 gem 'devise-i18n-views'
+gem 'jquery-rails'
