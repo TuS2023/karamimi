@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-9">
-    <div>
+    <table>
       <tr>
         <td>
           <%= review.title %>
@@ -24,19 +24,17 @@
         <td id="favorite_buttons_<%= review.id %>">
           <%= render 'public/favorites/btn', review: review %>
         </td>
-        <td>
+       <td>
           コメント数： <%= review.review_comments.count %>
         </td>
         <td>
           <%= render 'public/reviews/rate', review: review %>
         </td>
-        <td>
-          <% review.categories.each do |category| %>
-      　    <i class="fa-solid fa-tag"></i>
-            <%= category.category_name %>
-          <% end %>
-        </td>
       </tr>
-    </div>
+        <% review.categories.each do |category| %>
+          <i class="fa-solid fa-tag"></i>
+          <%= category.category_name %>
+        <% end %>
+    </table>
   </div>
 <% end %>
