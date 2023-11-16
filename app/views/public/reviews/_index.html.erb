@@ -1,5 +1,5 @@
 <% reviews.each do |review| %>
-  <div class="col-3 pb-5">
+  <div class="col-md-3 mt-3">
     <div class="text-center d-flex align-items-center mb-2", style="height: 120px";>
       <% if admin_signed_in? %>
         <%= link_to admin_review_path(review.id), class:"text-reset" do %>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-9 pb-5">
+  <div class="col-md-9 pb-5">
     <div>
       <%= review.title %>
     </div>
