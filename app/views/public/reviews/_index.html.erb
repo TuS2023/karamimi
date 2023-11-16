@@ -12,29 +12,28 @@
       <% end %>
     </div>
   </div>
-  <div class="col-9">
-    <table>
-      <tr>
-        <td>
-          <%= review.title %>
-        </td>
-        <td>
-          <h5><span>￥</span><%= review.price.to_s(:delimited) %></h5>
-        </td>
-        <td id="favorite_buttons_<%= review.id %>">
-          <%= render 'public/favorites/btn', review: review %>
-        </td>
-       <td>
-          コメント数： <%= review.review_comments.count %>
-        </td>
-        <td>
-          <%= render 'public/reviews/rate', review: review %>
-        </td>
-      </tr>
-        <% review.categories.each do |category| %>
-          <i class="fa-solid fa-tag"></i>
-          <%= category.category_name %>
-        <% end %>
-    </table>
+  <div class="col-9 pb-5">
+    <div>
+      <%= review.title %>
+    </div>
+    <div>
+      <h5><span>￥</span><%= review.price.to_s(:delimited) %></h5>
+    </div>
+    <div id="favorite_buttons_<%= review.id %>">
+      <%= render 'public/favorites/btn', review: review %>
+    </div>
+    <div>
+      コメント数： <%= review.review_comments.count %>
+    </div>
+    <div>
+      <%= render 'public/reviews/rate', review: review %>
+    </div>
+    <div>
+      <% review.categories.each do |category| %>
+        <i class="fa-solid fa-tag"></i>
+        <%= category.category_name %>
+      <% end %>
+    </div>
+
   </div>
 <% end %>
