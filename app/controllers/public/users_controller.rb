@@ -59,7 +59,7 @@ class Public::UsersController < ApplicationController
 #別ユーザー編集画面へ飛ばないようアクセス制限
     def is_matching_login_user
       user = User.find(params[:id])
-      unless user.id == current_user.id && @user.id == false
+      unless user.id == current_user.id
         redirect_to reviews_path , notice: '他のユーザーのプロフィール編集画面へ遷移はできません。'
       end
     end
