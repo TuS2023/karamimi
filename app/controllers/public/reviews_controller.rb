@@ -69,10 +69,13 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :explanation, :image, :store_name, :score, :price, :address, category_ids: [])
   end
+
   def correct_user
     @review = Review.find(params[:id])
     @user = @review.user
-    redirect_to(reviews_path) unless @user == current_user
+    unless @user == current_user
+      redirect_to reviews_path , notice: '他のユーザーの投稿編集・削除画面へ遷移はできません。'
+    end
   end
 
 end
