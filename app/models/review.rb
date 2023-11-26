@@ -14,7 +14,8 @@ class Review < ApplicationRecord
   validates :explanation, presence: true
   validates :store_name, presence: true
   validates :address, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
+
   validates :score, presence: true
 
 #絞り込み機能で条件指定
