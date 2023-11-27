@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 1 }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

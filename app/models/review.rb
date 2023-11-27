@@ -9,9 +9,9 @@ class Review < ApplicationRecord
   #もたせる画像はひとつ
   has_one_attached :image
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { minimum: 4 }
   validates :image, presence: true
-  validates :explanation, presence: true
+  validates :explanation, presence: true, length:{maximum:200}
   validates :store_name, presence: true
   validates :address, presence: true
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
