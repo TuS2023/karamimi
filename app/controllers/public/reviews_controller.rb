@@ -43,6 +43,10 @@ class Public::ReviewsController < ApplicationController
       @reviews = @reviews.page(params[:page]).per(5)
     end
     @keyword = params[:keyword]
+    
+    if @reviews.empty?
+      flash.now[:notice] = "検索結果はありません。"
+    end
 
   end
 
