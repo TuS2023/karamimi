@@ -27,7 +27,7 @@ end
 Review.find_or_create_by!(store_name: "イタリアン辛い") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
   review.explanation = "激辛トマトパスタです。"
-  review.user_id = 1
+  review.user = man1
   review.title = "唐辛子たっぷりトマトパスタ"
   review.address = "静岡県浜松市"
   review.score = 3
@@ -41,7 +41,7 @@ end
 Review.find_or_create_by!(store_name: "四川料理　辛") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
   review.explanation = "熱々で食べる激辛ビビンバです。"
-  review.user_id = 2
+  review.user = man2
   review.title = "激辛ビビンバ"
   review.address = "静岡県静岡市"
   review.score = 5
@@ -55,7 +55,7 @@ end
 Review.find_or_create_by!(store_name: "居酒屋　汗汗") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg")
   review.explanation = "ほどよい酸味の効いたウマ辛キムチです。"
-  review.user_id = 3
+  review.user = man3
   review.title = "ウマ辛キムチ"
   review.address = "静岡県掛川市"
   review.score = 2
@@ -66,7 +66,7 @@ end
 Review.find_or_create_by!(store_name: "らぁめん辛") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post4.jpg"), filename:"sample-post4.jpg")
   review.explanation = "やみつきになるピリ辛担々麺。"
-  review.user_id = 2
+  review.user = man2
   review.title = "やみつきピリ辛担々麺"
   review.address = "静岡県掛川市"
   review.score = 3
@@ -77,7 +77,7 @@ end
 Review.find_or_create_by!(store_name: "韓国料理店") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post5.jpg"), filename:"sample-post5.jpg")
   review.explanation = "チーズが多くて熱々の状態を楽しめます。"
-  review.user_id = 3
+  review.user = man3
   review.title = "本格チーズダッカルビ"
   review.address = "静岡県浜松市"
   review.score = 3
@@ -88,7 +88,7 @@ end
 Review.find_or_create_by!(store_name: "下町料理店") do |review|
   review.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post6.jpg"), filename:"sample-post6.jpg")
   review.explanation = "豚肉とキムチの酸味と辛味がマッチします。"
-  review.user_id = 3
+  review.user = man3
   review.title = "野菜多めのブタキムチ"
   review.address = "静岡県浜松市"
   review.score = 3
