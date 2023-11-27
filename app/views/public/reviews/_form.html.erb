@@ -1,0 +1,63 @@
+    
+      <div class="form-group">
+        <%= f.file_field :image, accept: "image/*", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <h4>タイトル</h4>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <h4>店名</h4>
+        <%= f.text_field :store_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <h4>住所</h4>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <h4>値段</h4>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <h4>辛さレベル</h4>
+          <div class="form-group" id="score">
+            <%= f.label :score %>
+            <%= f.hidden_field :score, id: :review_score, class: 'form-control' %>
+            <div id="post_raty"></div>
+          </div>
+          <script>
+            $(document).on('turbolinks:load', function() {
+              let elem = document.querySelector('#post_raty');
+              if (elem == null) return;
+
+              elem.innerHTML = ""
+              let opt = {
+                starOn: "<%= asset_path('fire1.png') %>",
+                starOff: "<%= asset_path('fire0.png') %>",
+                scoreName: 'review[score]',
+              };
+              raty(elem, opt);
+            });
+          </script>
+      </div>
+
+      <div class="form-group m-5">タグ</div>
+
+      <div class="row d-flex justify-content-start m-5">
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+          <div class="form-check form-check-inline flex flex-wrap">
+            <%= category.label do %>
+              <%= category.check_box %>
+              <%= category.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      
+  
