@@ -55,5 +55,14 @@
   header .fas {
     margin-right: 5px;
   }
-  
+  footer .container {
+    width:100%;
+    padding: 0;
+  }
+  .level_img, .level_content {
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+  }
+ 
 }
