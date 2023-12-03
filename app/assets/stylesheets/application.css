@@ -50,7 +50,7 @@
     justify-content: center;
   }
   header .nav-item {
-    margin: 10px 10px 0;
+    margin: 10px 10px;
   }
   header .fas {
     margin-right: 5px;
@@ -63,6 +63,7 @@
     display: block;
     margin: 10px auto;
   }
+  
   
  
 }
