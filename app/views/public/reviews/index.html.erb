@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-3 pt-3">
       <%= link_to '新しい順', reviews_path(latest: "true") %>
       |<%= link_to '古い順', reviews_path(old: "true") %>
       |<%= link_to '辛さレベルが高い順', reviews_path(high_score: "true") %>
       |<%= link_to '辛さレベルが低い順', reviews_path(low_score: "true") %>
     </div>
-    <div class="col">
+    <div class="col-md-9 pt-3">
       <%= render "search", review: @review %>
     </div>
   </div>
   <div class="row mt-5">
     <%= render "index", reviews: @reviews %>
   </div>
-  <%= paginate @reviews, theme: 'bootstrap-5' %>
+  <div class="col-md-3 offset-md-5 pagenate mt-3">
+    <%= paginate @reviews, theme: 'bootstrap-5' %>
+  </div>
+
 
 </div>

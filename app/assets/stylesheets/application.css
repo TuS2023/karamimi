@@ -63,7 +63,11 @@
     display: block;
     margin: 10px auto;
   }
-  
-  
+  .index_right_content {
+    margin-left: 60px;
+  }
+  .pagenate {
+    padding-left: 100px;
+  }
  
 }
