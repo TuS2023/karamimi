@@ -1,19 +1,23 @@
 <table>
   <tbody>
     <% review.review_comments.each do |review_comment| %>
-    <tr>
+    <tr style="border-bottom: 1px solid gray">
       <td>
         <%= link_to user_path(review_comment.user) do %>
           <%= image_tag review_comment.user.get_profile_image, size: '50x50' %><br>
           <%= review_comment.user.name %>
         <% end %>
       </td>
-      <td><%= review_comment.comment %></td>
-      <td>
+      <td class="pl-2"><%= review_comment.comment %></td>
+      <td class="pl-2">
         <% if review_comment.user == current_user %>
-          <%= link_to "削除", review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+          <%= link_to review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
         <% elsif admin_signed_in? %>
-          <%= link_to "削除", admin_review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+          <%= link_to admin_review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-sm btn-danger float-end" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
         <% end %>
       </td>
     </tr>

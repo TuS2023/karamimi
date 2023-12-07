@@ -1,11 +1,11 @@
 <div class="container mt-4">
   <h2 class="m-5">投稿詳細</h2>
   <div class="row">
-    <div class="col">
+    <div class="col-md-6">
       <%= image_tag @review.get_review_image, :style => "width:500px; height:400px;" %>
     </div>
     
-    <div class="col">
+    <div class="col-md-5 offset-md-1">
       <div>
         <h4>タイトル</h4>
         <p><%= @review.title %></p>
@@ -41,14 +41,14 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row pt-3">
+    <div class="col-md-10 mb-5">
       <h2>投稿内容</h2>
       <p><%= @review.explanation %></p>
-      <div class="col-6">
+      <div class="col-md-10 mb-3">
         <%= render "public/review_comments/comment", review: @review %>
       </div>
-      <div class="col-8">
+      <div class="col-md-10 mt-3">
         <% if user_signed_in? %>
           <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
         <% else %>
